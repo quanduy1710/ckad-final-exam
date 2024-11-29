@@ -1,0 +1,58 @@
+Name:             pod5
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             node1/10.148.0.52
+Start Time:       Fri, 29 Nov 2024 07:29:58 +0000
+Labels:           run=pod5
+Annotations:      cni.projectcalico.org/containerID: 77a3107c1346c990d6a05f32c08c53fea00ba9db438b6a850494070f91a95d8d
+                  cni.projectcalico.org/podIP: 192.168.166.143/32
+                  cni.projectcalico.org/podIPs: 192.168.166.143/32
+Status:           Running
+IP:               192.168.166.143
+IPs:
+  IP:  192.168.166.143
+Containers:
+  pod5-container:
+    Container ID:  containerd://4a7d436098c9550dad217ba1afab8350b777593d8bdba40af002bedc076d9010
+    Image:         busybox:1.31.0
+    Image ID:      docker.io/library/busybox@sha256:fe301db49df08c384001ed752dff6d52b4305a73a7f608f21528048e8a08b51e
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+      touch /tmp/ready && sleep 1d
+    State:          Running
+      Started:      Fri, 29 Nov 2024 07:29:59 +0000
+    Ready:          True
+    Restart Count:  0
+    Readiness:      exec [cat /tmp/ready] delay=5s timeout=1s period=10s #success=1 #failure=3
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-4sdbx (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-4sdbx:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  67s   default-scheduler  Successfully assigned default/pod5 to node1
+  Normal  Pulled     66s   kubelet            Container image "busybox:1.31.0" already present on machine
+  Normal  Created    66s   kubelet            Created container pod5-container
+  Normal  Started    66s   kubelet            Started container pod5-container

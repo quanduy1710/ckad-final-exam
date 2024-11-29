@@ -1,0 +1,25 @@
+duytq1710@cloudshell:~/ckad-final-exam/q3$ helm upgrade my-nginx bitnami/nginx --version 15.5.3 --set service.type=ClusterIP 
+Release "my-nginx" has been upgraded. Happy Helming!
+NAME: my-nginx
+LAST DEPLOYED: Fri Nov 29 07:15:16 2024
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+NOTES:
+CHART NAME: nginx
+CHART VERSION: 15.5.3
+APP VERSION: 1.25.3
+
+** Please be patient while the chart is being deployed **
+NGINX can be accessed through the following DNS name from within your cluster:
+
+    my-nginx.default.svc.cluster.local (port 80)
+
+To access NGINX from outside the cluster, follow the steps below:
+
+1. Get the NGINX URL by running these commands:
+
+    export SERVICE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].port}" services my-nginx)
+    kubectl port-forward --namespace default svc/my-nginx ${SERVICE_PORT}:${SERVICE_PORT} &
+    echo "http://127.0.0.1:${SERVICE_PORT}"

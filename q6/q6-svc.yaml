@@ -1,0 +1,35 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2024-11-29T07:37:29Z"
+    labels:
+      project: q6-api
+      run: project-q6-api
+    name: project-q6-svc
+    namespace: q6
+    resourceVersion: "17117"
+    uid: 00e5e628-6ba5-4576-896c-a2aa065e5859
+  spec:
+    clusterIP: 10.96.70.48
+    clusterIPs:
+    - 10.96.70.48
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 3333
+      protocol: TCP
+      targetPort: 80
+    selector:
+      project: q6-api
+      run: project-q6-api
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""

@@ -1,0 +1,38 @@
+Name:                   q7-deploy
+Namespace:              q7
+CreationTimestamp:      Fri, 29 Nov 2024 08:16:53 +0000
+Labels:                 app=q7-deploy
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=q7-deploy
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=q7-deploy
+  Containers:
+   httpd:
+    Image:        httpd:2.4.41-alpine
+    Port:         <none>
+    Host Port:    <none>
+    Environment:  <none>
+    Mounts:
+      /tmp/project-data from project-data (rw)
+  Volumes:
+   project-data:
+    Type:          PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:     q7-pvc
+    ReadOnly:      false
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   q7-deploy-5d466fdb69 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  39s   deployment-controller  Scaled up replica set q7-deploy-5d466fdb69 to 1

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: q8-10ab
+  name: q8-10ab
+  namespace: q8
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: q8-10ab
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: q8-10ab
+    spec:
+      serviceAccountName: q8-sa-v2
+      containers:
+      - image: httpd:2.4-alpine
+        name: httpd
+        resources:
+          requests:
+            memory: "20Mi"
+          limits:
+            memory: "50Mi"
+status: {}

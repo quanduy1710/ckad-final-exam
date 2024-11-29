@@ -1,0 +1,54 @@
+Name:             pod1
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             node2/10.148.0.53
+Start Time:       Fri, 29 Nov 2024 06:40:57 +0000
+Labels:           run=pod1
+Annotations:      cni.projectcalico.org/containerID: 839caf1acaecf5053dbafa0b7c0a6a85050bc10f04502e6488510b7cc266e3a7
+                  cni.projectcalico.org/podIP: 192.168.104.1/32
+                  cni.projectcalico.org/podIPs: 192.168.104.1/32
+Status:           Running
+IP:               192.168.104.1
+IPs:
+  IP:  192.168.104.1
+Containers:
+  pod1-container:
+    Container ID:   containerd://a25e638f7e6249f461dd37e18e0c5bfd9747eda47b9da6d8ce871eb87419e8b6
+    Image:          httpd:2.4.41-alpine
+    Image ID:       docker.io/library/httpd@sha256:06ad90574c3a152ca91ba9417bb7a8f8b5757b44d232be12037d877e9f8f68ed
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Fri, 29 Nov 2024 06:41:16 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-gz6k9 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-gz6k9:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  3m16s  default-scheduler  Successfully assigned default/pod1 to node2
+  Normal  Pulling    3m7s   kubelet            Pulling image "httpd:2.4.41-alpine"
+  Normal  Pulled     2m57s  kubelet            Successfully pulled image "httpd:2.4.41-alpine" in 9.216s (9.216s including waiting). Image size: 33292168 bytes.
+  Normal  Created    2m57s  kubelet            Created container pod1-container
+  Normal  Started    2m57s  kubelet            Started container pod1-container
